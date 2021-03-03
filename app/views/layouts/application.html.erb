@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>StoreApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: name %>
+    <% end %>
+    <div class="navbar">
+      <div class="container">
+        <div class="navlink">
+          <%= link_to 'Home', items_path %>
+        </div>
+        <% unless user_signed_in? %>
+          <div class="navlink">
+            <%= link_to 'Login', new_user_session_path %>
+          </div>
+        <% end %>
+        <% if user_signed_in? %>
+          <div class="navlink" id="cart">
+            <%= render partial: "cart/cart" %>
+          </div>
+          <div class="navlink">
+            <%= link_to 'Logout', destroy_user_session_path %>
+          </div>
+        <% end %>
+        <% if admin_signed_in? %>
+          <h4> Admin </h4>
+          <div class="navlink">
+            <%= link_to 'Items', admin_items_path %>
+          </div>
+          <div class="navlink">
+            <%#= link_to 'Orders', admin_orders_path %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <%= yield %>
+  </body>
+</html>

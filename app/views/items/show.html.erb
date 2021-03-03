@@ -1,0 +1,18 @@
+<h1 class="jumbotron"> <%= @item.name.capitalize %></h1>
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <p> <%= @item.description %> </p>
+      <p> <small> ₹ </small> <%= @item.price %> </p>
+      <%= form_with model: @order_item do |f| %>
+        <%= f.hidden_field :item_id, value: @item.id %>
+        <%= f.number_field :quantity, value: 1, min: 1%>
+        <%= f.submit "Add To Cart" %>
+      <% end %>
+      <%#= link_to 'Add to Cart', add_to_cart_path(@item), method: :put %>
+    </div>
+    <div class="card-footer">
+      <%= link_to 'Back to Item List', items_path %>
+    </div>
+  </div>
+</div>

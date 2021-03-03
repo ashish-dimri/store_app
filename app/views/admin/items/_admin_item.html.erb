@@ -1,0 +1,8 @@
+<tr>
+  <td> <%= admin_item.name %> </td>
+  <td> <%= admin_item.description %> </td>
+  <td> <%= admin_item.price %> </td>
+  <td> <%= admin_item.quantity %> </td>
+  <td> <%= link_to 'Edit', edit_admin_item_path(admin_item) %> </td>
+  <td> <%= link_to 'Delete', admin_item_path(admin_item), method: :delete %> </td>
+</tr>

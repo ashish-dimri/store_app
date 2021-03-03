@@ -1,0 +1,20 @@
+<%= form_for [:admin, @item], class: "form-horizontal" do |f| %>
+	<div class="card">
+		<%= f.label :name %>
+	  <%= f.text_field :name %>
+	</div>
+	<div class="card">
+		<%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+	<div class="card">
+		<%= f.label :price %>
+    <%= f.text_field :price %>
+  </div>
+	<div class="card">
+		<%= f.label :quantity %>
+    <%= f.text_field :quantity %>
+  </div>
+  <%= f.submit %>
+  <% end %>
+<%= link_to 'Back to Item List', admin_items_path %>
